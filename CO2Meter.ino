@@ -4,6 +4,7 @@
 #include <Adafruit_SSD1331.h>
 #include <MHZ19_uart.h>
 
+
 // You can use any (4 or) 5 pins 
 #define sclk 13
 #define mosi 11
@@ -84,13 +85,13 @@ display.drawRect(0, 0, 96, 64,GREEN);
 
   tone(2, 2000,100);
   display.setTextColor(CYAN);
-  display.setCursor(23,15);
+  display.setCursor(21,15);
   display.setTextSize(1);
   display.println("CO2 Meter");
   display.setCursor(12, 29);
   display.println("Joerg Krause");
-  display.setCursor(34,44);
-  display.println("2018");
+  display.setCursor(23,44);
+  display.println("Dec 2018");
  
  delay(4000);
 
@@ -750,22 +751,27 @@ void lcdTestPattern(void)
 
   uint8_t w,h;
   display.setAddrWindow(0, 0, 96, 64);
-  
-  for(h=0; h<64; h++)
-  {
-    for(w=0; w<96; w++)
-    {
-      if(w>83){display.writePixel(WHITE);}
-      else if(w>71){display.writePixel(BLUE);}
-      else if(w>59){display.writePixel(GREEN);}
-      else if(w>47){display.writePixel(CYAN);}
-      else if(w>35){display.writePixel(RED);}
-      else if(w>23){display.writePixel(MAGENTA);}
-      else if(w>11){display.writePixel(YELLOW);}
-      else {display.writePixel(BLACK);}
+
+  for (h = 0; h < 64; h++) {
+    for (w = 0; w < 96; w++) {
+      if (w > 83) {
+        display.writePixel(w, h, WHITE);
+      } else if (w > 71) {
+        display.writePixel(w, h, BLUE);
+      } else if (w > 59) {
+        display.writePixel(w, h, GREEN);
+      } else if (w > 47) {
+        display.writePixel(w, h, CYAN);
+      } else if (w > 35) {
+        display.writePixel(w, h, RED);
+      } else if (w > 23) {
+        display.writePixel(w, h, MAGENTA);
+      } else if (w > 11) {
+        display.writePixel(w, h, YELLOW);
+      } else {
+        display.writePixel(w, h, BLACK);
+      }
     }
   }
   display.endWrite();
-  
-
 }
